@@ -1,0 +1,267 @@
+---
+title: "Comparative analysis of the financial structure and solvency of the insurance sector in EU countries: approach based on Solvency II indicators"
+author:
+  - Alejandra Citlalli Pacheco Tovar
+  - Aranxa Perez Oviedo
+  - Laura Benczédi Munar
+institute: HEC Lausanne #TODO: make sure authors and affiliations are correct 
+date: "2025-11-12"
+format: 
+  html:
+    number-sections: true
+    html-math-method: katex #mathjax
+    self-contained: true
+    embed-resources: true
+    code-overflow: wrap
+    code-fold: true
+    code-tools: true
+    toc: true
+    toc-location: left
+    toc-depth: 3
+    toc-show: true
+    title-block-banner: "#01263a" # blue 90
+    echo: true # Show code in HTML (but folded)
+    include-in-header: # add custom css to make the text in the `</> Code` dropdown black
+      text: |
+        <style type="text/css">
+          .quarto-title-banner a {
+            color: #000000;
+          }
+        </style>
+jupyter: python3 #what language kernel to use
+abstract: |
+    What is our research, the main results
+  # TODO: We need to work more on this section 
+---
+
+# Introduction
+
+As future actuaries, we are expected to ensure that the safety and soundness of insurance companies are not compromised, while as consumers, we rely on insurers to have sufficient capital to meet their obligations even under extreme scenarios. Since its implementation in 2016, the Solvency II Directive has been the basis of Europe’s insurance regulation, promoting financial stability, transparency, and policyholder protection through a risk-based framework. However, despite this uniform structure, significant differences persist among EU countries in terms of financial composition, solvency ratios, and capital management practices. Understanding and comparing these Solvency II indicators across the EU is not only essential for evaluating the sector’s financial strength and resilience, but also personally relevant for us as actuaries and consumers who depend on the reliability and solvency of the insurance system.
+
+This project aims to explore and analyze the financial structure and insurance activity across European Union (EU) countries using official data obtained from the European Insurance and Occupational Pensions Authority (EIOPA). Two quarterly datasets were used for this purpose: the Balance Sheet and the Premiums, Claims, and Expenses datasets, both in CSV format.
+
+The project has two main objectives. The first is to conduct an exploratory analysis of the financial structure of insurers, including aspects such as assets, equity, and technical provisions, as well as their insurance activities, which cover premiums, claims, and operating expenses. This analysis also examines how solvency has evolved over time in relation to claims and expenses across EU countries.
+
+The second objective is to create visualizations that facilitate a comparative understanding of key financial indicators across regions. Specifically, the project aims to: 1. Compare indicators such as solvency, profitability, and expense control among EU countries. 2. Identify regional and temporal patterns in the financial performance of the European insurance sector. 
+
+
+## Related work 
+
+## Research questions
+- How do solvency patterns vary across the European Union countries and does solvency impact the countries’ profitability?
+- To what extend does the relationship between assets and liabilities correlate with premiums collected and claims paid across EU countries?
+- To what extent does the financial structure and asset allocation (e.g., investments in bonds) of insurers correlate with the volume of premiums collected across EU countries?
+- Is there a relationship between the premiums earned in each country relative to their GDP?
+
+<!-- TODO: We need to work more on this section - Expand with more details -->
+
+
+## Resources
+
+
+### Additional resources
+
+
+
+## General comments
+
+
+
+::: callout-tip
+### Essential abbreviations for understanding the paper
+
+- 
+
+# Data
+
+## Sources
+
+-   [European Insurance and Occupational Pensions Authority](https://www.eiopa.europa.eu/tools-and-data/insurance-statistics_en) This source provides statistical data and downloadable datasets about insurance companies in the EU/EEA. The data covers European (re)insurance undertakings and groups reporting regularly under Solvency II.
+
+
+## Processing steps <!-- TODO: Define better this section -->
+# Data Management and Preparation
+The data management process was conducted through several structured stages. Two datasets were utilized: one containing quaterly balance sheet data per year and another including premiums, claims, and expenses (PCE) information. Both datasets were provided in CSV format and represented quaterly financial data.
+
+The decison to use quaterly data instead of annual data is simply to ensure that, at the end of the manipulation of the two datasets, the constraint on the number of observations is respected, i.e., to have at least 1,000 observations, which would not have been the case using the datasets in yearly format.
+
+The initial stage consisted of gaining a thorough inderstanding of the datasets. This involved examining their structure, identifying the presence of missing values, determining the variables most relevant to the study, and reviewing the variable types available for the exploratory analysis phase. 
+
+The variables identified as most relevant to the analysis were as follows: 
+`Reporting country`, `Reference period`, `Item name (Balance Sheet)`, `Value (Balance Sheet)`, 
+`Undertaking type`, `Item name (PCE)`, `Value (PCE)`, `Item name (Own Funds)`, and `Value (Own Funds)`. 
+ <!-- TODO maybe change this format -->  
+
+Before the merging process, each dataset was prepared separately. A dictionary of unique insurance product codes was created to facilitate understanding of the data and to distinguish between different categories, such as assets and goodwill. The datasets were then filtered to retain only the necessary columns, and their structure was transformed from long to wide format in order to simplify subsequent analysis and merging of the dataset.
+
+Once the datasets were cleaned and reorganized, they were merged to ensure easier variable management and clearer graphical representations in later stages of the project. To perform the merging, Reporting country and Reference period were used as common keys. The resulting dataset had the following dimensions: 
+
+<style>
+.dataset-info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.dataset-box {
+  background-color: #eef4ff; /* azul claro */
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-weight: 500;
+  color: #111827;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  font-size: 1em;
+}
+</style>
+
+<div class="dataset-info">
+  <div class="dataset-box"><b>Balance Sheet:</b> (1049, 82)</div>
+  <div class="dataset-box"><b>Premiums:</b> (1049, 44)</div>
+  <div class="dataset-box"><b>Final Dataset:</b> (1049, 124)</div>
+</div>
+  
+Following the merge, missing values were addressed by replacing all N/A entries with zeros. All numerical variables were converted to the float data type and rounded to two decimal places, while the variables Reporting country and Date were preserved a categorical and temporal data types, respectively.
+
+Finally, duplicate entries were checked and removed. The resulting dataset was clean, consistent, and ready for use in data analysis and exploratory data analysis (EDA), with the objective of addressing the defined research questions. 
+
+
+```
+```
+
+## Challenges and limitations
+The main limitations of the dataset relates to the methodology required to merge datasets and compute various ratios and measures from different databases, while maintaining an optimal data structure for analysis.  
+
+<!-- TODO: We need to work more on this section: refine the description of dataset limitations -->
+### Missing and non-missing values
+
+```{py}
+#| code-fold: true
+#| code-summary: "Click to show code"
+
+# code 
+```
+```{py}
+#| code-fold: true
+#| code-summary: "Click to show code"
+
+# code 
+```
+
+# Exploratory Data Analysis (EDA)
+
+
+## Interactive graph 
+lalala 
+
+```{py}
+#| code-fold: true
+#| code-summary: "Click to show code"
+
+# code 
+```
+
+```{py}
+#| code-fold: true
+#| code-summary: "Click to show code"
+
+# code 
+```
+
+## Other title 
+
+
+```{py}
+#| code-fold: true
+#| code-summary: "Click to show code"
+
+# code 
+```
+
+## Other 3.3
+## 3.4
+
+## 3.5 
+
+## Interactive graph showing the relation between variables example 
+
+
+::: panel-tabset
+## Country
+
+```
+
+```
+
+## Country
+
+```
+```
+
+## Country
+
+```
+```
+
+
+## General heatmap of correlations
+
+## Heatmap of correlations for  country example 
+
+::: panel-tabset
+## Country
+
+```
+```
+
+## Country
+
+```
+```
+:::
+
+# Analysis 
+
+##  
+**Analysis of interaction terms**
+
+## 
+
+# Conclusion
+
+1.  **?**
+
+
+2.  **?**
+
+3.  **?**
+
+4.  **?**
+.
+
+## Final conclusion
+
+
+
+# Appendix
+
+
+# References <!-- TODO: Decide what of them keep or delete -->
+
+**Web Articles:**
+<!-- format example 
+CNBC. (2024). After anti-tourism protests, Spain receives record number of travelers. *CNBC*. Retrieved from <https://www.cnbc.com/2024/10/14/after-anti-tourism-protests-spain-receives-record-number-of-travelers.html> -->
+
+
+**Websites:**
+<!-- format example 
+World Bank. (n.d.). World Bank Open Data. *World Bank*. Retrieved from <https://data.worldbank.org/> -->
+
+**Indicators and Data Resources:**
+
+<!-- format example 
+
+World Bank. (n.d.). Consumer price index (CPI). *World Bank*. Retrieved from <https://data.worldbank.org/indicator/FP.CPI.TOTL>
+-->
+**Glossary Entries:**
