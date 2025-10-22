@@ -1,0 +1,557 @@
+---
+title: Project Title
+author:
+ - Name I, First Name I
+ - Name II, First Name II
+ - Name III, First Name III
+institute: Name of the University
+date: today
+title-block-banner: "#0095C8" # chosen for the university of lausanne
+toc-location: right
+bibliography: references.bib
+csl: https://raw.githubusercontent.com/citation-style-language/styles/master/apa.csl
+format: 
+  ##############################################################################
+  # Use the code below if you want to render html, otherwise just comment it out#
+  html:
+    # if you want to remove the table of contents, set this to false
+    toc: true
+    number-sections: true
+    html-math-method: katex
+    self-contained: true
+    code-overflow: wrap
+    code-fold: true      # Show code but FOLDED (collapsible) in HTML
+    code-tools: true     # Add code tools dropdown menu
+    echo: true           # Show code in HTML (but folded)
+    include-in-header: # add custom css to make the text in the `</> Code` dropdown black
+      text: |
+        <style type="text/css">
+          .quarto-title-banner a {
+            color: #000000;
+          }
+        </style>
+  ##############################################################################
+  # Use the code below if you want to render pdf, otherwise just comment it out#
+  pdf:
+       # wrapping the code also in the pdf (otherwise, it overflows)
+    toc: false
+    echo: false          # HIDE code completely in PDF
+    include-in-header:
+      text: |
+        \usepackage{fvextra}
+        \DefineVerbatimEnvironment{Highlighting}{Verbatim}{
+          commandchars=\\\{\},
+          breaklines, breaknonspaceingroup, breakanywhere
+        }
+  ##############################################################################
+  # Use the code below if you want to render docx, otherwise just comment it out#
+  docx: 
+    echo: false          # HIDE code completely in DOCX
+  ##############################################################################
+
+jupyter: python3
+abstract: |
+  This is the abstract of the report. It should be a short summary of the project, the data, the analysis and the results. It should be concise and to the point. It should not be longer than 250 words.
+execute: 
+  warning: false
+  # Note: echo setting is controlled per-format above (HTML, PDF, DOCX)
+---
+
+::: {.callout-important}
+## Interpretation > Visualization
+
+**Plots alone won't earn you a good grade.** What matters most is **interpreting your findings**.
+
+For every result you present:
+
+- **Explain** what the data shows
+- **Interpret** what it means for your research questions
+- **Discuss** implications and connect to domain knowledge
+
+Quality of insight > Quantity of plots. Your instructors can read plots—show them you *understand* what the data reveals.
+:::
+
+## Quarto Guide (Remove After) {.unnumbered}
+
+::: {.callout-tip}
+## Two Report Writing Options
+
+**Option 1 - Modular (Recommended for Teams):**
+
+- Each section in a separate `.qmd` file in `report/sections/`
+- Files prefixed with `_` (e.g., `_introduction.qmd`) are auto-included
+- Better for collaboration (fewer merge conflicts)
+- Render `report.qmd` to build the complete report
+
+**Option 2 - Single File:**
+
+- Write everything in `report.qmd`
+- Simpler but harder to collaborate
+- Delete `report/sections/` folder if using this approach
+
+See [Quarto includes documentation](https://quarto.org/docs/authoring/includes) for details.
+:::
+
+::: {.callout-tip}
+## What Are Code Chunks?
+
+**Code chunks** are blocks of executable code embedded in your Quarto document. They run when you render and include their output (plots, tables, results) in your report.
+
+**Basic Syntax:**
+
+- Start with three backticks followed by the language: ` ```python`
+- Write your code
+- End with three backticks: ` ``` `
+
+**Example:**
+
+```python
+import pandas as pd
+data = pd.DataFrame({'x': [1, 2, 3], 'y': [4, 5, 6]})
+print(data)
+```
+
+**Chunk Options** (use `#| option: value` at the top):
+
+- `#| echo: false` - Hide code, show only output
+- `#| eval: false` - Show code but don't run it
+- `#| output: false` - Run code but hide output
+- `#| warning: false` - Suppress warning messages
+- `#| fig-cap: "My Plot"` - Add figure caption
+- `#| label: fig-myplot` - Label for cross-referencing
+
+**Inline Code:** Use single backticks with `{python}` to insert values in text: `` `{python} 2 + 2` `` → `{python} 2 + 2`
+
+See [Quarto code cells documentation](https://quarto.org/docs/computations/execution-options.html) for all options.
+:::
+
+::: {.callout-note}
+## Interactive Plots in PDF
+
+Interactive plots/tables only work in HTML output. If using interactive elements, render to HTML only (comment out the `pdf:` format option).
+:::
+
+::: {.callout-tip}
+## Code Visibility by Format
+
+The YAML header controls code display:
+
+- **HTML**: Code is collapsible (readers can show/hide)
+- **PDF/DOCX**: Code is hidden (only results shown)
+
+**Override for specific chunks:**
+
+```python
+#| echo: true   # Show in all formats
+#| echo: false  # Hide in all formats
+```
+:::
+
+::: {.callout-tip}
+## Writing Math Equations
+
+Use LaTeX syntax for mathematical notation:
+
+**Inline:** `$\bar{x} = \frac{1}{n}\sum_{i=1}^{n}x_i$` → $\bar{x} = \frac{1}{n}\sum_{i=1}^{n}x_i$
+
+**Display:** Use `$$...$$` for separate lines:
+$$
+S(t) = P(T > t) = 1 - F(t)
+$$
+
+**Numbered (for referencing):**
+$$
+\text{Loss Ratio} = \frac{\text{Incurred Losses}}{\text{Earned Premium}}
+$$ {#eq-loss-ratio}
+
+Reference with `@eq-loss-ratio` → @eq-loss-ratio
+
+**Common symbols:** $\alpha$, $\beta$, $\sigma$, $\mu$, $\sum_{i=1}^{n}$, $\int_a^b f(x)dx$, $E[X]$, $\text{Var}(X)$
+
+More at [LaTeX Math Symbols](https://en.wikibooks.org/wiki/LaTeX/Mathematics).
+:::
+
+::: {.callout-tip}
+## Cross-Referencing Sections, Figures, Tables, and Equations
+
+Quarto automatically numbers and creates clickable links for:
+
+**Sections:**
+```markdown
+### Appendix A: Additional Plots {#sec-appendix-plots}
+
+Reference with: @sec-appendix-plots
+```
+
+**Figures:**
+```python
+#| label: fig-correlation
+#| fig-cap: "Correlation matrix"
+
+Reference with: @fig-correlation
+```
+
+**Tables:**
+```python
+#| label: tbl-summary
+#| tbl-cap: "Summary statistics"
+
+Reference with: @tbl-summary
+```
+
+**Equations:**
+```markdown
+$$ y = mx + b $$ {#eq-linear}
+
+Reference with: @eq-linear
+```
+
+**Working examples in this template:**
+
+- "As discussed in @sec-appendix-plots, we provide additional visualizations."
+- "See @fig-comparison for the debugging workflow."
+- "Individual images like @fig-before and @fig-after can also be referenced."
+
+**Note:** Use the same `@label` syntax for figures, tables, and equations. Quarto automatically numbers them and creates clickable links.
+
+See [Quarto Cross-References](https://quarto.org/docs/authoring/cross-references.html) for more.
+:::
+
+::: {.callout-tip}
+## HTML Tabsets
+
+Organize content into tabs, which are like container boxes for the content (HTML only, and not PDF/DOCX). They allow you to:
+
+- **Organize multiple related visualizations** without cluttering the page
+- **Show different views** of the same data (distribution, summary, box plot)
+- **Compare approaches** side-by-side (e.g., different plotting libraries)
+
+```markdown
+::: {.panel-tabset}
+## Tab 1
+Content
+## Tab 2
+More content
+## Tab 3
+Excessive amount of content
+:::
+```
+
+::: {.panel-tabset}
+## Tab 1
+Content
+
+## Tab 2
+More content
+
+## Tab 3
+Excessive amount of content
+:::
+:::
+
+::: {.callout-tip}
+## Including External Images and Files
+
+**Basic image syntax:**
+```markdown
+![Caption](path/to/image.png)
+```
+
+**With sizing and attributes:**
+```markdown
+![My figure](images/plot.png){width=80% fig-align="center"}
+```
+
+**Images with cross-references:**
+```markdown
+![Distribution analysis](images/histogram.png){#fig-histogram}
+
+As shown in @fig-histogram, the data is normally distributed.
+```
+
+**Common image paths:**
+
+- Relative to current file: `images/plot.png`
+- From project root: `../data/plots/figure.png`
+- Absolute path: `C:/Users/Name/project/images/plot.png` (avoid for reproducibility)
+
+**Supported formats:** PNG, JPG, SVG, PDF (PDF only in PDF output)
+
+**Pro tip:** Store images in `report/images/` folder for organization.
+:::
+
+::: {.callout-tip}
+## Markdown Text Formatting
+
+**Basic formatting:**
+
+- **Bold text:** `**bold**` or `__bold__` → **bold**
+- *Italic text:* `*italic*` or `_italic_` → *italic*
+- ***Bold and italic:*** `***both***` → ***both***
+
+**Note:** Markdown doesn't have built-in underline. For underline, use HTML:
+
+- <u>Underlined text:</u> `<u>underlined</u>` → <u>underlined</u>
+
+**Other useful formatting:**
+- `Inline code:` \`code\` → `code`
+- Superscript: `X^2^` → X^2^
+- Subscript: `H~2~O` → H~2~O
+- ~~Strikethrough:~~ `~~text~~` → ~~strikethrough~~
+
+**Headings:**
+```markdown
+# Heading 1
+## Heading 2
+### Heading 3
+#### Heading 4
+```
+
+**Lists:**
+```markdown
+- Unordered item
+- Another item
+  - Nested item (2 spaces indent)
+
+1. Ordered item
+2. Second item
+   1. Nested (3 spaces indent)
+```
+
+**Links:**
+```markdown
+[Link text](https://url.com)
+[Link with title](https://url.com "Hover text")
+```
+
+**Blockquotes:**
+```markdown
+> This is a quote
+> It can span multiple lines
+```
+
+See [Markdown Guide](https://quarto.org/docs/authoring/markdown-basics.html) for more.
+:::
+
+::: {.callout-note}
+## Including External Images
+
+Store external figures (diagrams, charts, screenshots) in `report/images/` and include them in your report.
+
+**Basic syntax:**
+```markdown
+![Caption](images/your-image.png){#fig-label width=70% fig-align="center"}
+```
+
+**Example - Multiple images side by side with cross-references:**
+```markdown
+::: {#fig-comparison layout-ncol=2 layout-valign="bottom"}
+
+![Before debugging](images/meme1.jpg){#fig-before width=100%}
+
+![After debugging](images/meme2.jpeg){#fig-after width=100%}
+
+The emotional journey of a data scientist debugging their code
+:::
+```
+
+::: {#fig-comparison layout-ncol=2 layout-valign="bottom"}
+
+![Before debugging](images/meme1.jpg){#fig-before width=100%}
+
+![After debugging](images/meme2.jpeg){#fig-after width=100%}
+
+The emotional journey of a data scientist debugging their code
+:::
+
+**Key options:**
+
+- `layout-ncol=2` - Two columns (each 50% width)
+- `layout-valign="bottom"` - Align by bottom edge
+- `width=100%` - Fill entire column
+- `fig-align="center"` - Center single images
+
+**Supported formats:**
+
+- **All outputs:** PNG, JPG/JPEG
+- **HTML only:** WEBP, SVG, GIF
+- **PDF only:** PDF images
+
+See the [Quarto Figures documentation](https://quarto.org/docs/authoring/figures.html) for advanced layouts, subcaptions, and complex figure arrangements.
+:::
+
+```{python}
+#| label: setup
+#| echo: false
+#| message: false
+#| output: false
+# Setup code chunk to load the packages, the project root and the source directory
+
+import importlib.util
+import os
+import sys
+import types
+from pathlib import Path
+
+
+def resolve_report_dir() -> Path:
+    if "__file__" in globals():
+        return Path(__file__).resolve().parent
+    doc_path = os.environ.get("QUARTO_DOCUMENT_PATH")
+    if doc_path:
+        return Path(doc_path).resolve()
+    return Path.cwd().resolve()
+
+
+def resolve_project_root(start: Path) -> Path:
+    env_root = os.environ.get("QUARTO_PROJECT_ROOT")
+    if env_root:
+        root = Path(env_root).resolve()
+        if (root / "src").is_dir():
+            return root
+
+    search_start = start
+
+    doc_path = os.environ.get("QUARTO_DOCUMENT_PATH")
+    if doc_path:
+        candidate = Path(doc_path).resolve()
+        if candidate.is_file():
+            candidate = candidate.parent
+        search_start = candidate
+
+    for candidate in [search_start, *search_start.parents]:
+        print(f"Checking candidate for project root: {candidate}")
+        if (candidate / "src").is_dir():
+            print(f"Resolved project root: {candidate}")
+            return candidate
+
+    raise FileNotFoundError(
+        "Could not locate a project root containing a 'src' directory. "
+        "Update the Quarto setup chunk to point to your project root."
+    )
+
+
+report_dir = resolve_report_dir()
+project_root = resolve_project_root(report_dir)
+src_dir = project_root / "src"
+
+print(f"Report directory resolved to: {report_dir}")
+print(f"Project root resolved to: {project_root}")
+print(f"Source directory resolved to: {src_dir}")
+
+if str(src_dir) not in sys.path:
+    sys.path.insert(0, str(src_dir))
+
+runtime_module = types.ModuleType("quarto_runtime")
+runtime_module.project_root = project_root
+runtime_module.report_dir = report_dir
+sys.modules["quarto_runtime"] = runtime_module
+
+module_path = src_dir / "project_setup.py"
+spec = importlib.util.spec_from_file_location("project_setup", module_path)
+if spec is None or spec.loader is None:
+    raise ImportError(f"Unable to load project_setup from {module_path}")
+
+project_setup = importlib.util.module_from_spec(spec)
+sys.modules["project_setup"] = project_setup
+spec.loader.exec_module(project_setup)
+
+project_setup.configure_environment(project_root=project_root)
+```
+
+::: {.callout-tip}
+## Controlling Python (Code) Generated Figure Size
+
+**For Python matplotlib plots**, figure size is controlled **in your Python code** using `figsize`:
+
+```python
+# Standard readable size
+fig, ax = plt.subplots(figsize=(8, 5))  # width, height in inches
+
+# Smaller figure
+fig, ax = plt.subplots(figsize=(6, 4))
+
+# Larger figure
+fig, ax = plt.subplots(figsize=(10, 6))
+```
+
+**Why `figsize` in code?** When you use `plt.subplots(figsize=...)` or `plt.figure(figsize=...)`, matplotlib creates the image at that exact size. Quarto chunk options like `#| fig-width:` and `#| fig-height:` are ignored because the figure size is already determined by your Python code.
+
+**To resize figures after creation:**
+
+Use the `width` attribute in curly braces (works for any image):
+
+```markdown
+![My plot](path/to/plot.png){width=70%}
+```
+
+Or in the chunk options (only for formats without explicit `figsize`):
+
+```python
+#| fig-width: 7
+#| fig-height: 5
+```
+
+**Recommended workflow:**
+
+1. Set `figsize` in your Python code to a readable default (e.g., `figsize=(8, 5)`)
+2. If the figure appears too large/small in your report, adjust the `figsize` values proportionally
+3. Keep aspect ratio consistent: divide/multiply both dimensions by the same factor
+
+**Good default sizes:**
+
+- Small plot: `figsize=(6, 4)`
+- Standard plot: `figsize=(8, 5)`
+- Large plot: `figsize=(10, 6)`
+- Wide plot: `figsize=(10, 4)`
+- Square plot: `figsize=(6, 6)`
+
+**Pro tip:** DPI (dots per inch) also affects quality. Matplotlib default is 100, but for publications use `plt.savefig('plot.png', dpi=300)` if you need high-resolution images.
+:::
+
+
+{{< include sections/_introduction.qmd >}}
+{{< include sections/_data.qmd >}}
+{{< include sections/_eda.qmd >}}
+{{< include sections/_analysis.qmd >}}
+{{< include sections/_conclusion.qmd >}}
+
+# References {.unnumbered}
+
+::: {#refs}
+:::
+
+# Appendices {.unnumbered}
+
+::: {.callout-note}
+## What Goes in Appendices?
+
+**Appendices = supplementary material** that supports but isn't essential to your main story.
+
+**Include in appendices:**
+
+- **Additional plots and visualizations** that provide extra detail but don't fit the main narrative flow
+- **Alternative visualizations** of the same data (e.g., different plot types)
+- **Exploratory plots** that informed your analysis but aren't central to your findings
+- **Full code listings** for complex analyses
+- **Extended statistical tables** with detailed results
+- **Technical details** about data processing steps
+- **Sensitivity analyses** or robustness checks
+- **Data dictionaries** with detailed variable descriptions
+
+**What to Keep in Main Report:**
+
+- **Key visualizations** that directly answer your research questions
+- **Essential plots** for understanding your methodology
+- **Critical results** that support your conclusions
+- **Main findings** that tell your data story
+
+**Remember:** Main report should be self-contained. Reference appendices when needed: "See @sec-appendix-plots for additional plots."
+:::
+
+
+### Appendix A: Additional Exploratory Plots {#sec-appendix-plots}
+
+### Appendix B: Complete Code Listings {#sec-appendix-code}
+
+### Appendix C: Supplementary Tables {#sec-appendix-tables}
