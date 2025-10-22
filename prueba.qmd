@@ -4,7 +4,7 @@ author:
   - Alejandra Citlalli Pacheco Tovar
   - Aranxa Perez Oviedo
   - Laura Benczédi Munar
-institute: HEC Lausanne #TODO: make sure authors and affiliations are correct 
+institute: HEC Lausanne
 date: "2025-11-12"
 format: 
   html:
@@ -78,32 +78,6 @@ The second objective is to create visualizations that facilitate a comparative u
 
 -   [European Insurance and Occupational Pensions Authority](https://www.eiopa.europa.eu/tools-and-data/insurance-statistics_en) This source provides statistical data and downloadable datasets about insurance companies in the EU/EEA. The data covers European (re)insurance undertakings and groups reporting regularly under Solvency II.
 
- ## Description 
-<!--
--- Summarize the main features of the dataset, including the types of variables, their formats, and any relevant metadata.
-
-
-Provide a clear summary:
-
-    Number of observations: X rows
-    Number of variables: Y columns
-    Time period: Start date to end date
-    Geographic coverage: Region/Country
-    Key variables: List the most important variables for your analysis
--->
-
-
-## Loading Data 
-
-<!--
-Use relative paths via project_root for reproducibility
-Check data types after loading
-Inspect the first few rows to verify correct loading
-Document any loading parameters (e.g., encoding, delimiter)
-
-Important: Do not change the data loading approach shown below. The template uses project_root from the setup chunk to ensure your code works regardless of where the report is run from.
---> 
-
 
 ## Processing steps <!-- TODO: Define better this section -->
 # Data Management and Preparation
@@ -175,33 +149,8 @@ The main limitations of the dataset relates to the methodology required to merge
 # code 
 ```
 
-
 # Exploratory Data Analysis (EDA)
-<!-- 
-The next is the teacher's requirements: 
-The goal of EDA is to:
 
-  1.Understand the structure and patterns in your data
-  2.Identify relationships between variables
-  3.Detect anomalies, outliers, and data quality issues
-  4.Generate hypotheses for further analysis
-  5.Choose appropriate statistical methods
-
-Good EDA combines visualizations + summary statistics + domain knowledge.
-
-
-
-Creating plots is only half the work. The most important part of EDA is interpreting what your visualizations reveal about the data.
-
-For every plot you create, you must:
-
-    Describe what the plot shows (patterns, trends, distributions)
-    Explain why these patterns matter for your research questions
-    Connect findings to your project goals and domain context
-    Justify subsequent analysis decisions based on these insights
-
-A plot without interpretation is meaningless. Your grade depends heavily on the quality of your interpretations, not just the number of plots you create.
--->
 
 ## Interactive graph 
 lalala 
@@ -220,7 +169,7 @@ lalala
 # code 
 ```
 
-## Univariate Analysis 
+## Other title 
 
 
 ```{py}
@@ -230,13 +179,13 @@ lalala
 # code 
 ```
 
-## Bivariate Analysis
-## Correlation Analysis
+## Other 3.3
+## 3.4
 
-## Key Findings 
+## 3.5 
 
 ## Interactive graph showing the relation between variables example 
-<!-- This is optional -->
+
 
 ::: panel-tabset
 ## Country
@@ -272,7 +221,7 @@ lalala
 ```
 :::
 
-# Findings and Discussion 
+# Analysis 
 
 ##  
 **Analysis of interaction terms**
@@ -291,40 +240,9 @@ lalala
 4.  **?**
 .
 
-## Summary
+## Final conclusion
 
-## Limitations 
-<!-- Honestly discuss the constraints and potential weaknesses of your analysis. Strong projects acknowledge limitations!
 
-Consider:
-
-    Data limitations: Sample size, missing data, measurement issues, lack of certain variables
-    Methodological limitations: Simplifying assumptions, choice of methods, inability to establish causation
-    Scope limitations: Time constraints, focus on specific aspects only
-    Generalizability: Can your findings apply beyond your specific dataset?
-
-Be specific: Don’t just say “small sample size” - explain what impact this has on your conclusions. -->
-
-## Future Work 
-<!-- Outline specific next steps for extending or improving the analysis. Be concrete and realistic.
-
-Good future work suggestions:
-
-    Collect additional data: “Gather data from additional semesters to increase sample size and assess temporal stability of instructor effects”
-    Apply advanced methods: “Implement mixed-effects models to account for nested data structure (students within instructors)”
-    Test additional hypotheses: “Examine whether instructor effects vary by student prior knowledge using interaction terms”
-    Expand scope: “Include qualitative data from student evaluations to understand mechanisms behind performance differences”
-
-Avoid vague statements like:
-
-    ❌ “Get more data”
-    ❌ “Use more variables”
-    ❌ “Apply machine learning”
-
-Instead, be specific about WHAT, WHY, and HOW:
-
-    ✅ “Collect data on student study hours to control for effort as a confounding variable, which would help isolate the true causal effect of instructor quality on performance”
--->
 
 # Appendix
 
