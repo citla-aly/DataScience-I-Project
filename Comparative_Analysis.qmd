@@ -40,63 +40,34 @@ Insurance companies play a fundamental role in maintaining financial stability b
 
 Despite the existence of this unified regulatory system, notable disparities persist among European Union (EU) countries in terms of financial composition, solvency ratios, and capital management practices. Examining these differences is essential to assess the financial strength and resilience of the European insurance sector and to understand how insurers adapt to varying economic and regulatory environments.
 
+## Project Goals and Motivation
 This project aims to analyze and compare the financial structure and insurance activity of EU countries using official data provided by the European Insurance and Occupational Pensions Authority (EIOPA). Three quarterly datasets were used for this purpose: 1. Balance Sheet 2. Premiums, Claims, and Expenses datasets and 3. Own Funds, all available in CSV format.
 
 The current study has two main objectives. The first is to conduct an exploratory analysis of insurers’ financial structures. Focusing on assets (equities, bonds, Derivatives, Property, Holdings and Other Investments), liabilities (technical provisions for life and non life insurance) as well as their operational activity (premiums earned, claims incurred, and expenses). 
-As the dataset is from 2017 to 2024 the evolution of solvency over time across is explored in EU countries.
+As the dataset is from 2016 to 2025 the evolution of solvency over time across is explored in EU countries.
 
 The second objective is to develop visual tools that facilitate a comparative understanding of key financial indicators, highlighting both regional and temporal patterns in the European insurance sector. Specifically, the project compares solvency, profitability, and expense control indicators to identify differences and trends among EU member states.
 
-
 ## Related work 
-This work was inspired by both the Insurance Economics course and the European Insurance and Occupational Pensions Authotiry (EIOPA) webpage, due to its interactive dashboards fed with Solvency II datasets. On one side, the insurance economics course introduced us to key metrics for assessing insurance markets, such as insurance penetration and insurance density, which provided a theoretical foundation on the brader insurance picture. and on second hand, exploring the EIOPA webpage and its datasets motivated us to create our own visualizations and take full ownership of the analysis process. 
-By combining these resources, we were able to see firsthand how much insight can be drawn from insurance data throught 8 years (2017-2024), from trends in premiums and claims to broader market dynamics.
+This work was inspired by both the Insurance Economics course and the European Insurance and Occupational Pensions Authotiry (EIOPA) webpage, due to its interactive dashboards fed with Solvency II datasets. On one side, the insurance economics course introduced us to key metrics for assessing insurance markets, such as insurance penetration and insurance density, which provided a theoretical foundation on the broader insurance picture. and on second hand, exploring the EIOPA webpage and its datasets motivated us to create our own visualizations and take full ownership of the analysis process. 
+By combining these resources, we were able to see firsthand how much insight can be drawn from insurance data throught 8 years (2017-2024)^2, from trends in premiums and claims to broader market dynamics.
 
-## Research questions
+# Research questions
 - How do solvency patterns vary across the European Union countries and does solvency impact the countries’ profitability?
-- To what extend does the relationship between assets and liabilities correlate with premiums collected and claims paid across EU countries?
+- To what extent does the relationship between assets and liabilities correlate with premiums collected and claims paid across EU countries?
 - To what extent does the financial structure and asset allocation (e.g., investments in bonds) of insurers correlate with the volume of premiums collected across EU countries?
 - Is there a relationship between the premiums earned in each country relative to their GDP?
 
 <!-- TODO: We need to work more on this section - Expand with more details -->
 
 
-## Resources
-
-
-### Additional resources
 
 
 
-## General comments
-
-
-
-::: callout-tip
-### Essential abbreviations for understanding the paper
 
 - 
 
 # Data
-
-## Sources
-
--   [European Insurance and Occupational Pensions Authority](https://www.eiopa.europa.eu/tools-and-data/insurance-statistics_en) This source provides statistical data and downloadable datasets about insurance companies in the EU/EEA. The data covers European (re)insurance undertakings and groups reporting regularly under Solvency II.
-
- ## Description 
-<!--
--- Summarize the main features of the dataset, including the types of variables, their formats, and any relevant metadata.
-
-
-Provide a clear summary:
-
-    Number of observations: X rows
-    Number of variables: Y columns
-    Time period: Start date to end date
-    Geographic coverage: Region/Country
-    Key variables: List the most important variables for your analysis
--->
-
 
 ## Loading Data 
 
@@ -160,6 +131,31 @@ Finally, duplicate entries were checked and removed. The resulting dataset was c
 
 ```
 ```
+# Expolatory Analysis
+
+# Conclusion
+
+# Appendix
+
+
+# References
+
+-   [European Insurance and Occupational Pensions Authority](https://www.eiopa.europa.eu/tools-and-data/insurance-statistics_en) This source provides statistical data and downloadable datasets about insurance companies in the EU/EEA. The data covers European (re)insurance undertakings and groups reporting regularly under Solvency II.
+
+ ## Description 
+<!--
+-- Summarize the main features of the dataset, including the types of variables, their formats, and any relevant metadata.
+
+
+Provide a clear summary:
+
+    Number of observations: X rows
+    Number of variables: Y columns
+    Time period: Start date to end date
+    Geographic coverage: Region/Country
+    Key variables: List the most important variables for your analysis
+-->
+
 
 ## Challenges and limitations
 The main limitations of the dataset relates to the methodology required to merge datasets and compute various ratios and measures from different databases, while maintaining an optimal data structure for analysis.  
@@ -250,7 +246,7 @@ lalala
 
 ```
 
-## Country
+
 
 ```
 ```
