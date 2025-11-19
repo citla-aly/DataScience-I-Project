@@ -59,27 +59,40 @@ Second, the project aims to develop visual tools such as maps, histograms, bar p
 As we previously mentioned this kind of analysis is strongly relevant in actuarial practice. Understanding how solvency levels, profitability, and expenses vary across countries and through time can support better risk assessment, capital allocation, and early identification of potential financial stress. Similarly, detecting patterns in claims or premiums can help refine pricing strategies or improve portfolio management. This project seeks to contribute to those processes that directly affect the stability of insurance companies and the protection of policyholders. 
 
 ## Related work 
-This work was inspired by both the Insurance Economics course and the European Insurance and Occupational Pensions Authotiry (EIOPA) webpage, due to its interactive dashboards fed with Solvency II datasets. On one side, the insurance economics course introduced us to key metrics for assessing insurance markets, such as insurance penetration and insurance density, which provided a theoretical foundation on the broader insurance picture. and on second hand, exploring the EIOPA webpage and its datasets motivated us to create our own visualizations and take full ownership of the analysis process. 
-By combining these resources, we were able to see firsthand how much insight can be drawn from insurance data throught 8 years (2017-2024)^2, from trends in premiums and claims to broader market dynamics.
+Does insurance contribute to economic growth, or does economic growth drive demand for insurance? This question was introduced to us during our __**Insurance Economics**__ course and motivated us to seek an answer. In our journey, we found several academic papers that guided our thinking. One of them was __**“Assessing the Profitability of Insurance Contracts subject to Swiss Solvency Test (SST)” Huber (2020).**__ This paper focuses on the capital requirements of the SST framework and explains how real profitability depends not only on premiums, expenses, and claims, but also on the solvency capital required by the regulator and the cost of capital. Additionally, it describes an inverse relationship between solvency and profitability. We found these results particularly interesting because they were contrary to our expectations (we initially assumed that more solvency would imply more profitability), and they also reveal that several additional factors influence insurance results, such as the company’s asset allocation and risk management practices.
+
+In __**“Investment Portfolio Allocation and Insurance Solvency: New Evidence from Insurance Groups in the Era of Solvency II”**__, Thomas Poufinas and Evangelia Siopi explore other related factors. They examined 88 EU insurance groups and analyzed how the composition of their investment portfolios affects their solvency ratio (SCR). They show how investment structure directly influences the capital requirements under the Solvency II framework and therefore impacts solvency outcomes.
+
+In contrast to Huber’s contract-level analysis and their own earlier work on solvency and investment composition, Siopi and Poufinas (2023) offer a much broader perspective by examining both profitability (ROA, ROE) and financial strength (measured as equity-to-assets) across 23 EU insurance groups over a long horizon (2007–2021) in __**“Impact of Internal and External Factors on Profitability and Financial Strength of Insurance Groups” Siopi & Poufinas (2023)**__. Their study incorporates a wide set of internal determinants (such as reinsurance usage, invested assets, size, and underwriting leverage) and external macro factors (GDP growth, inflation, long-term interest rates, market structure, and domestic market size). Their main finding is that, once these firm-level and country-level variables are accounted for, the introduction of Solvency II shows no statistically significant effect on either profitability or financial strength. Instead, they demonstrate that profitability and financial strength are shaped primarily by management efficiency, underwriting risk, portfolio structure, and economic conditions. This makes their contribution essential for understanding that regulatory capital frameworks alone do not drive performance: internal management decisions and macroeconomic environments often play a larger role.
+
+Taken together, these three works explore the connections between solvency, profitability, and asset allocation in insurance companies under regulatory frameworks, but they do not integrate all these dimensions within a single study. In this paper, we aim to deepen that idea by examining the financial composition, solvency ratios, and capital management practices of EU insurance companies to understand how these elements relate to one another and how they differ across EU countries.
+
+
 
 ## Research questions
+
+Trying to connect the previous ideas about how financial structure affects solvency and profitability, and how these dimensions relate to each other, we construct the following research questions:
+
 - How do solvency patterns vary across the European Union countries and does solvency impact the countries’ profitability?
+
 - To what extent does the relationship between assets and liabilities correlate with premiums collected and claims paid across EU countries?
+
 - To what extent does the financial structure and asset allocation (e.g., investments in bonds) of insurers correlate with the volume of premiums collected across EU countries?
+
 - Is there a relationship between the premiums earned in each country relative to their GDP?
 
+In summary, we aim to understand how regulatory framework factors and risk-management practices vary across EU countries, and how these differences impact profitability.
+
+
 <!-- TODO: We need to work more on this section - Expand with more details -->
-
-
-
-
-
-
-- 
 
 # Data
 
 This project aims to analyze and compare the financial structure and insurance activity of EU countries using official data provided by the European Insurance and Occupational Pensions Authority (EIOPA). Three quarterly datasets were used for this purpose: 1. Balance Sheet 2. Premiums, Claims, and Expenses datasets and 3. Own Funds, all available in CSV format.
+
+- 
+  - 
+
 
 ## Loading Data 
 
