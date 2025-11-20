@@ -1,5 +1,5 @@
 ---
-title: "Comparative analysis of the financial structure and solvency of the insurance sector in EU countries: approach based on Solvency II indicators"
+title: "Solvency and Financial Structure in EU Insurance Markets A Comparative Study Based on Solvency II Indicators "
 author:
   - Alejandra Citlalli Pacheco Tovar
   - Aranxa Perez Oviedo
@@ -36,50 +36,50 @@ abstract: |
 
 # Introduction
 
-Insurance companies play a fundamental role in maintaining financial stability by ensuring that risks are properly managed and that sufficient capital is available to meet obligations under adverse conditions. The **Solvency II Directive**, implemented in 2016, serves as the cornerstone of insurance regulation across Europe.It establishes a risk-based framework that promotes transparency, financial soundness, and policyholder protection based on Quantitative (Pilar I), Qualitative (Pilar II) and Information (Pilar III) requirements. 
+Insurance markets contribute significantly to economic stability by transforming uncertain risks into predictable financial commitments. As __[Arrow (1965)](https://doi.org/10.1007/978-3-642-20548-4)__ describes, insurance represents the exchange of money today for money payable contingent upon the occurrence of certain events. This essential function relies on the sector’s ability to maintain adequate capital buffers and withstand adverse conditions. According to the European Insurance and Occupational Pensions Authority __[(EIOPA)](https://www.eiopa.europa.eu/browse/regulation-and-policy/solvency-ii_en#background-how-and-why-solvency-ii-came-to-life)__, the **Solvency II prudential regime**, in force since January 2016, establishes the requirements that insurance and reinsurance undertakings must meet to ensure adequate protection of policyholders and beneficiaries __(EIOPA, n.d.)__.
 
-Despite the existence of this unified regulatory system, notable disparities persist among European Union (EU) countries in terms of financial composition, solvency ratios, and capital management practices. Examining these differences is essential to assess the financial strength and resilience of the European insurance sector and to understand how insurers adapt to varying economic and regulatory environments.
+Despite the existence of this harmonized regulatory framework, significant differences across countries persist within the European Union. These divergences arise from economic, demographic, and structural characteristics, such as population size, gross domestic product (GDP) levels, mortality patterns, as well as more subjective elements including culture and risk appetite. As a result, EU countries can exhibit varying solvency ratios __[(EIOPA, 2023)](https://reports.insuranceeurope.eu/annual-report-2024-2025/s/28/about-insurance-europe)__, financial structures, and capital management strategies shaped by national economic conditions, supervisory practices, and the composition of insurers’ balance sheets.
 
-From a wider perspective, analysing a country’s solvency factors is significantly relevant for multiple stakeholders. For insurers, country-level financial stability directly affects investment strategies and long-term risk exposures. Insurers rely heavily on financial markets; therefore, financial conditions influence their ability to generate stable returns and maintain adequate solvency positions.
-
-For investors, differences in national solvency environments shape the risk–return profile of insurance companies operating across Europe. Countries with more stable financial markets, or more robust supervisory regimes may provide safer investment opportunities, while weaker environments may signal higher volatility. 
-
-For consumers, a country’s financial strength indirectly affects the reliability and price of insurance products. In economically stable markets, insurers tend to maintain stronger balance sheets, face lower capital costs, and offer more competitive premiums. Contrary, in markets with higher risk, policyholders may face reduced product availability, higher premiums, or lower confidence in insurers’ long-term ability to pay claims.
-
-In this context, conducting an exploratory analysis of solvency-related factors across EU countries provides valuable insights into the financial tendencies and  regulatory conditions that shape the stability of the insurance sector and how it may influence the decisions of insurers, investors, and policyholders alike.
-
-
+This study conducts a comparative analysis of Solvency II indicators provided by EIOPA databases across EU countries, with the principal objective of identifying structural diversity, examining differences in investment composition, and providing an evidence based understanding of how, despite a common regulatory regime, national economic contexts shape distinct solvency and financial patterns across insurance markets.
 
 
 ## Project Goals
-The current study has two main objectives. First we aim to conduct an exploratory analysis of insurers’ financial structures. Besides a descriptive analysis of data, we will include univariate analysis (examining some variables individually), bivariate and correlation analysis (to understand relationships between key financial indicators), and temporal analysis (to study how solvency and other metrics evolve from 2016 to 2025). 
-By focusing on assets, liabilities, premiums, claims, expenses, and solvency indicators such as SCR and MCR ratios, we seek to provide a clearer picture of the financial health and risk profiles of insurers across EU members.
-Second, the project aims to develop visual tools such as maps, histograms, bar plots, etc., that facilitate comparisons across contries and over time. These visualizations will help to higlight both regional and temporal patterns in the European insurance sector.
 
-As we previously mentioned this kind of analysis is strongly relevant in actuarial practice. Understanding how solvency levels, profitability, and expenses vary across countries and through time can support better risk assessment, capital allocation, and early identification of potential financial stress. Similarly, detecting patterns in claims or premiums can help refine pricing strategies or improve portfolio management. This project seeks to contribute to those processes that directly affect the stability of insurance companies and the protection of policyholders. 
+Understanding how solvency levels, profitability, and expenses within insurance vary across countries and over time is of central importance in actuarial practice. Differences in insurers’ financial strength directly influence capital allocation, pricing strategies, and the early identification of potential financial stress. Similarly, recognising patterns in claims or premiums supports more accurate pricing, improved portfolio management, and stronger long-term risk control. Although this project will not explore the broader connection through all these areas, it seeks to present a very clear view of the available data in EIOPA Insurance Statistics website by offering insights that are relevant both for the stability of insurance companies and for the protection of policyholders.
+
+The motivation for this project arises from the need to better understand and visually communicate the differences that exist across EU countries in terms of Solvency II indicators. We aim to detect if countries display significant variation in their solvency  indicators, investment structures, and financial performance. The specific Solvency II indicators examined in this study are introduced in Section 3 (Research Questions).
+
+Therefore to accomplish such task, we established 2 main objectives:
+
+- **Exploratory Data Analysis (EDA):** Perform a descriptive analysis of insurers’ financial structures for the year 2024, detailed by quarterly performance and univariate analysis of key variables, such as assets, liabilities, Solvency Capital Requirement (SCR) ratio, Minimum Capital Requirement (MCR) ratio, etc.
+
+- **Development of Visual Tools:** Produce visualizations such as maps, histograms, correlation matrix, bar charts, and comparative plots that facilitate interpretation and highlight key differences across countries and over time. The time series analysis will focus on the period from 2017 to 2024 with the aim of analyzing changes in solvency and other financial measures and identifying trends in the European insurance market.
+
+This section outlines the broader motivation and objectives of the project. The remainder of the paper is organised as follows. **Section 2** reviews the related work. **Section 3** introduces the research questions, with **Section 3.1** detailing the dataset alongside the preprocessing and data-cleaning procedures. **Sections 3.2.1, 3.2.2,** and **3.2.3** then present the analyses corresponding to Research Questions 1, 2, and 3. Finally, **Section 4** concludes the study by summarising the key findings from the perspective of both insurers and consumers.
 
 ## Related work 
-Does insurance contribute to economic growth, or does economic growth drive demand for insurance? This question was introduced to us during our __**Insurance Economics**__ course and motivated us to seek an answer. In our journey, we found several academic papers that guided our thinking. One of them was __**“Assessing the Profitability of Insurance Contracts subject to Swiss Solvency Test (SST)” Huber (2020).**__ This paper focuses on the capital requirements of the SST framework and explains how real profitability depends not only on premiums, expenses, and claims, but also on the solvency capital required by the regulator and the cost of capital. Additionally, it describes an inverse relationship between solvency and profitability. We found these results particularly interesting because they were contrary to our expectations (we initially assumed that more solvency would imply more profitability), and they also reveal that several additional factors influence insurance results, such as the company’s asset allocation and risk management practices.
 
-In __**“Investment Portfolio Allocation and Insurance Solvency: New Evidence from Insurance Groups in the Era of Solvency II”**__, Thomas Poufinas and Evangelia Siopi explore other related factors. They examined 88 EU insurance groups and analyzed how the composition of their investment portfolios affects their solvency ratio (SCR). They show how investment structure directly influences the capital requirements under the Solvency II framework and therefore impacts solvency outcomes.
+Multiple lines of research have examined how insurers’ financial structures, investment decisions, and broader economic conditions influence solvency outcomes under the Solvency II framework. A broader macroeconomic perspective is offered by studies examining the insurance–growth nexus. In **[The Relationship Between Insurance and Economic Growth: Evidence from the European Union Countries](https://doi.org/10.1080/1331677x.2019.1588765)**, the authors analyse annual data from 2004 to 2015 to assess how insurance development interacts with economic growth **(Peleckienė et al., 2019)**. Their results show substantial cross-country heterogeneity: insurance sector development is generally higher in economically advanced countries, and the relationship between insurance penetration and economic growth varies significantly across member states. Some countries display positive and statistically significant relationships, others negative ones, and causality patterns differ across the EU, ranging from GDP-driven insurance growth to insurance-driven GDP growth or no detectable relationship.
 
-In contrast to Huber’s contract-level analysis and their own earlier work on solvency and investment composition, Siopi and Poufinas (2023) offer a much broader perspective by examining both profitability (ROA, ROE) and financial strength (measured as equity-to-assets) across 23 EU insurance groups over a long horizon (2007–2021) in __**“Impact of Internal and External Factors on Profitability and Financial Strength of Insurance Groups” Siopi & Poufinas (2023)**__. Their study incorporates a wide set of internal determinants (such as reinsurance usage, invested assets, size, and underwriting leverage) and external macro factors (GDP growth, inflation, long-term interest rates, market structure, and domestic market size). Their main finding is that, once these firm-level and country-level variables are accounted for, the introduction of Solvency II shows no statistically significant effect on either profitability or financial strength. Instead, they demonstrate that profitability and financial strength are shaped primarily by management efficiency, underwriting risk, portfolio structure, and economic conditions. This makes their contribution essential for understanding that regulatory capital frameworks alone do not drive performance: internal management decisions and macroeconomic environments often play a larger role.
+Expanding on this line of inquiry, Siopi and Poufinas (2023) adopt a broader perspective in **[Impact of Internal and External Factors on Profitability and Financial Strength of Insurance Groups](https://doi.org/10.1007/s11294-023-09873-y )**. Studying 23 EU insurance groups from 2007 to 2021, they evaluate both profitability (ROA, ROE) and financial strength (equity-to-assets) in relation to firm-level characteristics and macroeconomic factors including GDP growth, inflation, long-term interest rates, and market structure. Their key conclusion is that, once these determinants are taken into account, the introduction of Solvency II does not exert a statistically significant effect on either profitability or financial strength **(Siopi & Poufinas, 2023)**. Instead, managerial efficiency, underwriting performance, portfolio composition, and broader economic conditions emerge as the dominant drivers. This result underscores that regulatory frameworks alone do not determine insurer performance; internal strategic decisions and macroeconomic environments often play a more decisive role.
 
-Taken together, these three works explore the connections between solvency, profitability, and asset allocation in insurance companies under regulatory frameworks, but they do not integrate all these dimensions within a single study. In this paper, we aim to deepen that idea by examining the financial composition, solvency ratios, and capital management practices of EU insurance companies to understand how these elements relate to one another and how they differ across EU countries.
+Additional notable contributions include the study **[Enterprise Risk Management and Solvency: The Case of the Listed EU Insurers]((https://doi.org/10.1016/j.jbusres.2019.09.034))**investigates the relationship between Enterprise Risk Management (ERM) adoption and solvency. As well as **[Solvency II assumptions for increasing the international competitiveness of EU insurance industry]((https://doi.org/10.1016/j.sbspro.2013.12.927))** , where they analyze how Solvency II regime under implementation will help to increase the international competitiveness of EU insurance industry as they could reallocate own funds according the results of potential decrease or increase in solvency requirement relative to the standard formula. **(Peleckienė & Peleckis, 2014)**
 
+Collectively, these studies emphasise that solvency, profitability, and financial resilience within EU insurance markets are shaped by a combination of investment structure, internal management decisions, risk-management practices, and broader macroeconomic conditions. They also highlight the cross-country variation that continues to exist despite the uniform regulatory environment established by Solvency II. However, none of these studies integrate all three dimensions within a single analysis.
 
+In this paper, we aim to advance this discussion by examining the financial composition, solvency and profitability ratios of EU insurance companies to better understand how these elements relate to one another and how they differ across EU countries.
 
 ## Research questions
 
 Trying to connect the previous ideas about how financial structure affects solvency and profitability, and how these dimensions relate to each other, we construct the following research questions:
 
-- How do solvency patterns vary across the European Union countries and does solvency impact the countries’ profitability?
+- **How do solvency patterns vary across the European Union countries and does solvency impact the countries’ profitability?**
 
-- To what extent does the relationship between assets and liabilities correlate with premiums collected and claims paid across EU countries?
+- **To what extent does the relationship between assets and liabilities correlate with premiums collected and claims paid across EU countries?**
 
-- To what extent does the financial structure and asset allocation (e.g., investments in bonds) of insurers correlate with the volume of premiums collected across EU countries?
+- **To what extent does the financial structure and asset allocation (e.g., investments in bonds) of insurers correlate with the volume of premiums collected across EU countries?**
 
-- Is there a relationship between the premiums earned in each country relative to their GDP?
+- **Is there a relationship between the premiums earned in each country relative to their GDP?**
 
 In summary, we aim to understand how regulatory framework factors and risk-management practices vary across EU countries, and how these differences impact profitability.
 
@@ -87,41 +87,41 @@ In summary, we aim to understand how regulatory framework factors and risk-manag
 <!-- TODO: We need to work more on this section - Expand with more details -->
 
 # Data
+## Sources
+This project analyzes the financial structure and insurance activity of EU countries using official supervisory data published downloaded from: 
 
-This project aims to analyze and compare the financial structure and insurance activity of EU countries using official data provided by the European Insurance and Occupational Pensions Authority (EIOPA). Three quarterly datasets were used for this purpose: 1. Balance Sheet 2. Premiums, Claims, and Expenses datasets and 3. Own Funds, all available in CSV format.
+- **[European Insurance and Occupational Pensions Authority (EIOPA)](https://www.eiopa.europa.eu/index_en)**. 
 
-- 
-  - 
+  - **[Balance Sheet (B)](https://www.eiopa.europa.eu/tools-and-data/insurance-statistics_en#own-funds)**
+  Contains country-level information on assets and liabilities, distinguishing between life and non-life business and including reinsurance recoverables. This dataset supports a detailed assessment of insurers’ financial positions under Solvency II.
 
+  - **[Premiums, Claims and Expenses (PCE)](https://www.eiopa.europa.eu/tools-and-data/insurance-statistics_en#own-funds)**
+  Reports gross and net premiums, claims incurred, changes in technical provisions, and operating expenses for life and non-life insurance. It provides insight into insurers’ underwriting activity and operational performance (EIOPA, 2024).
 
-## Loading Data 
+  - **[Own Funds (O)](https://www.eiopa.europa.eu/tools-and-data/insurance-statistics_en#own-funds)**
+  Includes Solvency Capital Requirement (SCR) and Minimum Capital Requirement (MCR), both in absolute values and percentile distributions (10th–90th), separately for life, non-life, and other undertakings.
 
-<!--
-Use relative paths via project_root for reproducibility
-Check data types after loading
-Inspect the first few rows to verify correct loading
-Document any loading parameters (e.g., encoding, delimiter)
+- **[World Bank](https://data.worldbank.org/)** 
+    - Gross Domestic Price Idex
 
-Important: Do not change the data loading approach shown below. The template uses project_root from the setup chunk to ensure your code works regardless of where the report is run from.
---> 
+- **[Geographic Information System of the Commission. It provides the European Commission (GISCO)](https://ec.europa.eu/eurostat/web/gisco)**
+    - Thematic and statistical maps of the European Union.
 
+## Data Management and Preparation
+The data management process was conducted through several structured stages. All datasets were provided in CSV format and represented quaterly financial data.
 
-## Processing steps <!-- TODO: Define better this section -->
-# Data Management and Preparation
-The data management process was conducted through several structured stages. Two datasets were utilized: one containing quaterly balance sheet data per year and another including premiums, claims, and expenses (PCE) information. Both datasets were provided in CSV format and represented quaterly financial data.
-
-The decison to use quaterly data instead of annual data is simply to ensure that, at the end of the manipulation of the two datasets, the constraint on the number of observations is respected, i.e., to have at least 1,000 observations, which would not have been the case using the datasets in yearly format.
-
-The initial stage consisted of gaining a thorough inderstanding of the datasets. This involved examining their structure, identifying the presence of missing values, determining the variables most relevant to the study, and reviewing the variable types available for the exploratory analysis phase. 
+The initial stage consisted of gaining a thorough understanding of the datasets. This involved examining their structure, identifying the presence of missing values, determining the variables most relevant to the study, and reviewing the variable types available for the exploratory analysis phase. 
 
 The variables identified as most relevant to the analysis were as follows: 
-`Reporting country`, `Reference period`, `Item name (Balance Sheet)`, `Value (Balance Sheet)`, 
-`Undertaking type`, `Item name (PCE)`, `Value (PCE)`, `Item name (Own Funds)`, and `Value (Own Funds)`. 
  <!-- TODO maybe change this format -->  
 
-Before the merging process, each dataset was prepared separately. A dictionary of unique insurance product codes was created to facilitate understanding of the data and to distinguish between different categories, such as assets and goodwill. The datasets were then filtered to retain only the necessary columns, and their structure was transformed from long to wide format in order to simplify subsequent analysis and merging of the dataset.
+| Group                           | Variables (Common)                       | Other Variables                              | Description of Other Variables                               |
+|--------------------------------|-------------------------------------------|-----------------------------------------------|--------------------------------------------------------------|
+| **Balance Sheet**              | `Reporting country`, `Reference period`   | `Item name`, `Value (Balance Sheet)`          | Includes balance sheet components                            |
+| **Premiums, Claims, Expenses** | `Reporting country`, `Reference period`   | `Item name`, `Value (PCE)`                    | Includes premium, claims, and expense components             |
+| **Own Funds**           | `Reporting country`, `Reference period`   | `Item name`, `Value (Own Funds)`              | Includes solvency metrics                                    |
 
-Once the datasets were cleaned and reorganized, they were merged to ensure easier variable management and clearer graphical representations in later stages of the project. To perform the merging, Reporting country and Reference period were used as common keys. The resulting dataset had the following dimensions: 
+Before data processing, the individual datasets had the following dimensions:
 
 <style>
 .dataset-info {
@@ -146,12 +146,87 @@ Once the datasets were cleaned and reorganized, they were merged to ensure easie
 <div class="dataset-info">
   <div class="dataset-box"><b>Balance Sheet:</b> (1049, 82)</div>
   <div class="dataset-box"><b>Premiums:</b> (1049, 44)</div>
-  <div class="dataset-box"><b>Final Dataset:</b> (1049, 124)</div>
+  <div class="dataset-box"><b>Own Funds:</b> (66255, 8)</div>
+  <!--<div class="dataset-box"><b>Final Dataset:</b> (1049, 124)</div> -->
 </div>
-  
-Following the merge, missing values were addressed by replacing all N/A entries with zeros. All numerical variables were converted to the float data type and rounded to two decimal places, while the variables Reporting country and Date were preserved a categorical and temporal data types, respectively.
 
-Finally, duplicate entries were checked and removed. The resulting dataset was clean, consistent, and ready for use in data analysis and exploratory data analysis (EDA), with the objective of addressing the defined research questions. 
+## Data Collection and Loading
+
+<!-- Important: Do not change the data loading approach shown below. The template uses project_root from the setup chunk to ensure your code works regardless of where the report is run from.
+--> 
+The initial inspection consisted of:
+
+- Uploading each file to the working environment
+- Using `.info()` and .`describe()` to inspect variable types, reporting frequency, and the extent of missing values
+
+A key observation was that all datasets were in a “long format”, meaning:
+
+- One column identified the variable (“Item Code” or “Item Name”)
+- One column contained the corresponding numerical value
+
+<img src="images/data1.jpeg" style="float:right; width:45%; margin-left:15px;">
+
+In our case, the original long structure (where each observation is stored in its own row and key identifiers such as Item Code and Value repeat) was not ideal for conducting cross-country and time-based financial analysis. A wide format is more appropriate because it consolidates each country-quarter into a single row and expands each Item Code into a dedicated column, simplifying merging, comparisons, and the computation of solvency or balance-sheet indicators. 
+
+A single variable column (“Value”) and a variable identifier column (“Item Code/Name”) were present in all files.
+
+## Data Wrangling and Reshaping
+### Standardization and Pre-processing
+
+Before combining the datasets, several preparation steps were performed:
+
+- Standardization of country names and reporting dates
+- Verification that no duplicate country–quarter entries were present
+- Filtering to retain only the variables relevant to the analysis
+- Removal of the EEA aggregated record in the PCE and Own Funds datasets to avoid double counting
+
+A dictionary was constructed to map each **Item Code → Descriptive** Item Name, ensuring interpretability while keeping concise variable labels.
+
+### Reshaping from Long to Wide Format 
+
+Since all datasets shared the same key identifier **(Reporting Country + Reference Period)**, each dataset was transformed from long → wide format:
+
+- One row per country-quarter
+- Each Item Code becomes a separate column
+- A suffix indicating the originating dataset was added (e.g., __R0500_B, R0110_PCE, R0200_O__) to retain traceability 
+
+### Reshaping from Long to Wide Format
+Since all datasets shared the same key identifier (**Reporting Country + Reference Period**), each dataset was transformed from **long → wide** format:
+
+- One row per country-quarter
+- Each Item Code becomes a separate column
+- A suffix indicating the originating dataset was added (e.g., `R0500_B, R0110_PCE, R0200_O`) to retain traceability.
+
+### Merging the Datasets
+
+Using **Reporting Country** and **Reference Period** as merge keys, the three reshaped datasets were integrated into a single unified table.
+
+ Data types were then standardized:
+
+- Numeric values → `float`
+- Reporting dates → `datetime`
+- Countries → `string`
+
+### Time Window Selection
+Although the raw files span **Q3 2016–Q2 2025**, the project uses **Q1 2017–Q4 2024**, to ensure full-year consistency and avoid partially reported quarters.
+
+## Missing Values and Outliers
+### Missing Values 
+
+- Balance Sheet: Many missing values are inherent to the template (e.g., items not applicable to certain markets). These missing entries were not imputed unless analytically required. (See Appendix.)
+- Premiums, Claims and Expenses & Own Funds: Missing values were minimal and primarily related to non-reported items. No imputation was applied.
+- GDP Data: Missing values were treated by forward-filling or removing years without complete coverage, depending on the analysis.
+### Outliers 
+
+Preliminary descriptive statistics and visual inspections (boxplots and percentile checks) did not reveal data-quality outliers beyond natural cross-country variation. Since EIOPA data is validated by supervisory authorities, extreme values were treated as true economic observations, not data errors.
+
+## Final Dataset 
+
+After all wrangling steps, the final merged dataset contained:
+1079 rows (country-quarter observations)
+159 columns (wide-format financial indicators)
+The dataset meets the project requirement of having over 1,000 observations, which would not have been achievable using annual data alone. Its unified structure supports consistent visualization, comparability across countries, and robust statistical analysis.
+
 
 
 ```
@@ -160,166 +235,9 @@ Finally, duplicate entries were checked and removed. The resulting dataset was c
 
 # Conclusion
 
-# Appendix
-
-
-# References
-
--   [European Insurance and Occupational Pensions Authority](https://www.eiopa.europa.eu/tools-and-data/insurance-statistics_en) This source provides statistical data and downloadable datasets about insurance companies in the EU/EEA. The data covers European (re)insurance undertakings and groups reporting regularly under Solvency II.
-
- ## Description 
-<!--
--- Summarize the main features of the dataset, including the types of variables, their formats, and any relevant metadata.
-
-
-Provide a clear summary:
-
-    Number of observations: X rows
-    Number of variables: Y columns
-    Time period: Start date to end date
-    Geographic coverage: Region/Country
-    Key variables: List the most important variables for your analysis
--->
-
 
 ## Challenges and limitations
 The main limitations of the dataset relates to the methodology required to merge datasets and compute various ratios and measures from different databases, while maintaining an optimal data structure for analysis.  
-
-<!-- TODO: We need to work more on this section: refine the description of dataset limitations -->
-### Missing and non-missing values
-
-```{py}
-#| code-fold: true
-#| code-summary: "Click to show code"
-
-# code 
-```
-```{py}
-#| code-fold: true
-#| code-summary: "Click to show code"
-
-# code 
-```
-
-
-# Exploratory Data Analysis (EDA)
-<!-- 
-The next is the teacher's requirements: 
-The goal of EDA is to:
-
-  1.Understand the structure and patterns in your data
-  2.Identify relationships between variables
-  3.Detect anomalies, outliers, and data quality issues
-  4.Generate hypotheses for further analysis
-  5.Choose appropriate statistical methods
-
-Good EDA combines visualizations + summary statistics + domain knowledge.
-
-
-
-Creating plots is only half the work. The most important part of EDA is interpreting what your visualizations reveal about the data.
-
-For every plot you create, you must:
-
-    Describe what the plot shows (patterns, trends, distributions)
-    Explain why these patterns matter for your research questions
-    Connect findings to your project goals and domain context
-    Justify subsequent analysis decisions based on these insights
-
-A plot without interpretation is meaningless. Your grade depends heavily on the quality of your interpretations, not just the number of plots you create.
--->
-
-## Interactive graph 
-lalala 
-
-```{py}
-#| code-fold: true
-#| code-summary: "Click to show code"
-
-# code 
-```
-
-```{py}
-#| code-fold: true
-#| code-summary: "Click to show code"
-
-# code 
-```
-
-## Univariate Analysis 
-
-
-```{py}
-#| code-fold: true
-#| code-summary: "Click to show code"
-
-# code 
-```
-
-## Bivariate Analysis
-## Correlation Analysis
-
-## Key Findings 
-
-## Interactive graph showing the relation between variables example 
-<!-- This is optional -->
-
-::: panel-tabset
-## Country
-
-```
-
-```
-
-
-
-```
-```
-
-## Country
-
-```
-```
-
-
-## General heatmap of correlations
-
-## Heatmap of correlations for  country example 
-
-::: panel-tabset
-## Country
-
-```
-```
-
-## Country
-
-```
-```
-:::
-
-# Findings and Discussion 
-
-##  
-**Analysis of interaction terms**
-
-## 
-
-# Conclusion
-
-1.  **?**
-
-
-2.  **?**
-
-3.  **?**
-
-4.  **?**
-.
-
-## Summary
-
-## Limitations 
 <!-- Honestly discuss the constraints and potential weaknesses of your analysis. Strong projects acknowledge limitations!
 
 Consider:
@@ -355,21 +273,23 @@ Instead, be specific about WHAT, WHY, and HOW:
 # Appendix
 
 
-# References <!-- TODO: Decide what of them keep or delete -->
+# References
 
-**Web Articles:**
-<!-- format example 
-CNBC. (2024). After anti-tourism protests, Spain receives record number of travelers. *CNBC*. Retrieved from <https://www.cnbc.com/2024/10/14/after-anti-tourism-protests-spain-receives-record-number-of-travelers.html> -->
+-   [European Insurance and Occupational Pensions Authority](https://www.eiopa.europa.eu/tools-and-data/insurance-statistics_en) This source provides statistical data and downloadable datasets about insurance companies in the EU/EEA. The data covers European (re)insurance undertakings and groups reporting regularly under Solvency II.
+
+ 
+<!--
+-- Summarize the main features of the dataset, including the types of variables, their formats, and any relevant metadata.
 
 
-**Websites:**
-<!-- format example 
-World Bank. (n.d.). World Bank Open Data. *World Bank*. Retrieved from <https://data.worldbank.org/> -->
+Provide a clear summary:
 
-**Indicators and Data Resources:**
-
-<!-- format example 
-
-World Bank. (n.d.). Consumer price index (CPI). *World Bank*. Retrieved from <https://data.worldbank.org/indicator/FP.CPI.TOTL>
+    Number of observations: X rows
+    Number of variables: Y columns
+    Time period: Start date to end date
+    Geographic coverage: Region/Country
+    Key variables: List the most important variables for your analysis
 -->
-**Glossary Entries:**
+
+# Appendix
+
