@@ -467,7 +467,7 @@ new_cols = pd.DataFrame({
 df = pd.concat([df, new_cols], axis=1)
 cols = ["Own_Funds","SCR_ratio","MCR_ratio","Total_TP"] #
 sns.set_theme()
-sns.pairplot(df[cols], diag_kind="hist", corner=True)
+sns.pairplot(df[cols], diag_kind="hist", corner=True, height=2)
 plt.show()
 ```
 
@@ -543,8 +543,8 @@ fig.update_geos(
 )
 
 fig.update_layout(
-    width=800,
-    height=600,
+    width=700,
+    height=500,
     margin=dict(l=0, r=0, t=40, b=0)
 )
 
@@ -573,8 +573,8 @@ fig.update_geos(
 )
 
 fig.update_layout(
-    width=800,
-    height=600,
+    width=700,
+    height=500,
     margin=dict(l=0, r=0, t=40, b=0)
 )
 
@@ -604,8 +604,8 @@ fig.update_geos(
 )
 
 fig.update_layout(
-    width=800,
-    height=600,
+    width=700,
+    height=500,
     margin=dict(l=0, r=0, t=40, b=0)
 )
 
@@ -619,7 +619,7 @@ Germany and Austria exhibit the highest average SCR ratios, reflecting stronger 
 The segmentation of Own Funds and Technical Provisions is more pronounced, forming two distinct groups with a clear concentration in Central European countries. France and Germany dominate with the largest volumes. This is consistent with their status as two of the largest insurance markets in Europe and their high levels of insurance penetration (an aspect that will be examined further in subsequent research questions). [@FundacionMAPFRE2025]
 
 
-!["Source: MAPFRE Economics (based on data from the annual reports of the groups specified)"](images/data4.png){fig-align="center" width="60%"}
+!["Source: MAPFRE Economics (based on data from the annual reports of the groups specified)"](images/data4.png){fig-align="center" width="80%"}
 
 Having identified segmentation across countries, the next step is to examine whether these differences in solvency factors are persistent over time or merely reflect conditions in the most recent period. Countries are classified into a high-solvency and a low-solvency group to evaluate whether the observed gap persists over time. 
 
@@ -647,6 +647,8 @@ order = sorted(df_10SR["year_quarter"].unique())
 df_10SR["year_quarter"] = pd.Categorical(df_10SR["year_quarter"],
                                        categories=order,
                                        ordered=True)
+#quitar 2025 
+df_10SR = df_10SR[~df_10SR["year_quarter"].isin(["2025 Q1", "2025 Q2"])]
 
 # Average SCR
 evol_mcr = (
@@ -656,7 +658,7 @@ evol_mcr = (
     .reset_index()
 )
 
-plt.figure(figsize=(8,4))
+plt.figure(figsize=(7,3.5))
 sns.lineplot(
     data=evol_mcr,
     x="year_quarter",
@@ -682,11 +684,10 @@ An interesting pattern emerges during the COVID-19 period: high-solvency countri
 
 After comparing solvency across EU countries, the next step is to understand whether higher solvency levels actually lead to better financial performance. To explore this connection, we focus on key profitability indicators in the non-life insurance sector.
 
-We restrict the profitability analysis to non-life insurance, where the relationship between premiums, claims, and expenses is short-term and directly linked to underwriting performance. Life insurance profitability depends heavily on long-term reserving and investment returns, which introduce additional complexity and make solvency-profitability relationships harder to isolate. By focusing on non-life, we ensure that performance ratios reflect operational outcomes rather than long-term financial effects. In literature the most common profitability ratios are the following: 
+We restrict the profitability analysis to non-life insurance, where the relationship between premiums, claims, and expenses is short-term and directly linked to underwriting performance. Life insurance profitability depends heavily on long-term reserving and investment returns, which introduce additional complexity and make solvency-profitability relationships harder to isolate. In literature the most common profitability ratios are the following:
 
-- **Combined Ratio**
 
-It measures the overall underwriting performance of non-life insurers. It indicates whether the core insurance activity is profitable before considering investment income.
+- **Combined Ratio** : It measures the overall underwriting performance of non-life insurers. 
 $$
   \text{CR} = 
   \frac{\text{Claims incurred + Expenses}}
@@ -694,9 +695,8 @@ $$
 }}
 $$
 
-- **Loss Ratio**
+- **Loss Ratio**: It measures the proportion of premiums that go toward paying claims.
 
-  It measures the proportion of premiums that go toward paying claims. It reflects the insurer’s ability to price risk appropriately and control losses.
 $$
   \text{LR} = 
   \frac{\text{Claims incurred}}
@@ -704,9 +704,8 @@ $$
 }}
 $$
 
-- **Expense Ratio**
-  
-  It measures how much of the premium income is consumed by operating expenses, such as commissions, underwriting costs, and administration.
+- **Expense Ratio**: It measures how much of the premium income is consumed by operating expenses, such as commissions, underwriting costs, and administration.
+
 
 $$
   \text{ER} = 
@@ -733,14 +732,13 @@ df["OwnFunds_Total"] = df["R1000_BS"].copy()
 df["ROOF"] = df["Technical_Profit"] / df["OwnFunds_Total"] 
 ```
 
-To compare performances across countries, we use a boxplot representation. It allows us to visualize both the central tendency and the variability of the Combined Ratio over time within each country. This is particularly important in the insurance context, where volatility in claims can result in significant fluctuations in underwriting results. Wider distributions indicate more unstable performance, while narrow boxes suggest consistent results across periods. 
+To compare performances across countries, we use a boxplot representation. It allows us to visualize both the central tendency and the variability of the Combined Ratio over time within each country. This is particularly important in the insurance context, where volatility in claims can result in significant fluctuations in underwriting results. Wider distributions indicate more unstable performance, while narrow boxes suggest consistent results across periods.
 
-This approach not only highlights which countries are more profitable on average but also reveals differences in stability, helping us identify markets where profitability may be more sensitive to risk shocks or pricing conditions.
 
 ::: {.panel-tabset}
 ## Combined Ratio
 ```{python} 
-plt.figure(figsize=(8, 4))
+plt.figure(figsize=(7, 4))
 
 sns.boxplot(
     data=df,
@@ -758,7 +756,7 @@ plt.show()
 ```
 ## Expense Ratio 
 ```{python}
-plt.figure(figsize=(8, 4))
+plt.figure(figsize=(7, 4))
 
 sns.boxplot(
     data=df,
@@ -776,7 +774,7 @@ plt.show()
 ```
 ## Loss Ratio 
 ``` {python}
-plt.figure(figsize=(8, 4))
+plt.figure(figsize=(7, 4))
 
 sns.boxplot(
     data=df,
@@ -794,16 +792,17 @@ plt.show()
 ```
 :::
 
-The boxplots show that countries such as Malta and Lithuania exhibit significantly higher volatility in their Combined Ratio. This is consistent with smaller and less diversified markets, where isolated events can materially impact aggregate results. In contrast, larger markets such as Germany, Norway, and the Netherlands display more stable distributions, reflecting a greater ability to absorb risks.
+The boxplots show that countries such as Malta and Lithuania exhibit significantly higher volatility in their Combined Ratio. This is consistent with smaller and less diversified markets, where isolated events can materially impact profitability results. In contrast, larger markets such as Germany, Norway, and the Netherlands display more stable distributions, reflecting a greater ability to absorb risk without loss profitability. 
 
 Although both the Expense Ratio and the Loss Ratio drive underwriting profitability, the variability observed in the Combined Ratio appears to be primarily driven by the Loss Ratio, as their distributions show more similar patterns of dispersion. The Expense Ratio, by comparison, exhibits lower variability across countries.
 
-To further explore these relationships and to understand how solvency indicators interact with profitability metrics a correlation matrix will be computed and visualized it through a heatmap.
+To further explore these relationships and to understand how solvency indicators interact with profitability metrics a correlation matrix will be computed and visualized through a heatmap.
+
 
 ```{python}
 df_relation = df.groupby("Country")[["SCR_ratio","Own_Funds","Total_TP", "Combined_Ratio","Loss_Ratio", "Expense_Ratio"
 ]].mean()
-plt.figure(figsize=(8, 6))
+plt.figure(figsize=(7, 6))
 
 sns.heatmap(
     df_relation.corr(),
@@ -822,21 +821,17 @@ plt.tight_layout()
 plt.show()
 ```
 
-The heatmap confirms a strong negative correlation between the Loss Ratio and the Expense Ratio (-0.87). This pattern reflects differences in business models: firms operating with leaner cost structures, such as low-cost distribution channels, often compete through more aggressive pricing strategies, which may lead to higher incurred losses. Conversely, insurers with higher expense levels typically rely on more service-intensive or intermediated distribution models and therefore maintain lower loss ratios to preserve profitability. 
+The heatmap confirms a strong negative correlation between the Loss Ratio and the Expense Ratio (-0.87). Companies using low-cost distribution channels tend to rely on aggressive pricing, which reduces margins and attracts more price-sensitive risks, ultimately leading to higher incurred losses. Conversely, insurers with higher operating expenses must keep loss ratios lower in order to sustain profitability.
 
-We also observe a strong positive correlation between Own Funds and Technical Provisions (0.94). This result is expected, as larger insurers with more mature portfolios accumulate higher technical provisions and consequently require higher levels of own funds. 
+The heatmap also reveals several additional relationships between solvency and profitability factors.
 
-The heatmap also reveals several additional relationships between solvency and profitability factors.  
+First, the **SCR ratio is negatively correlated with both the Combined Ratio and the Loss Ratio**. Insurers with higher SCR ratios tend to exhibit stronger underwriting performance, such as better risk selection and more disciplined pricing, resulting in lower loss and combined ratios. Second, the **SCR ratio shows a small positive correlation with the Expense Ratio**. Well-capitalized insurers often operate multiple business lines, manage sophisticated investment portfolios, etc. Such operational complexity increases commissions, administrative costs, and system expenses, leading to higher expense ratios. However, the magnitude of these correlations suggests that the impact of SCR ratio on profitability is not particularly strong.
 
-First, the SCR ratio is **negatively correlated** with both the Combined Ratio and the Loss Ratio. Insurers with higher SCR ratios tend to exhibit stronger underwriting performance, such as better risk selection, more disciplined pricing, and more effective reinsurance strategies, resulting in lower loss and combined ratios.
+Finally,  **Own Funds and Technical Provisions are positively correlated with the Loss and Combined Ratios**. Large insurers handle greater portfolios and therefore experience a greater volume of claims in absolute terms, which can increase loss ratios and, consequently, combined ratios when premiums do not scale proportionately. This indicates that size-related factors have a negative impact on insurers profitability.
 
-Second, the SCR ratio shows a light **positive correlation** with the Expense Ratio. Large, well-capitalized insurers often operate multiple business lines, manage sophisticated investment portfolios, etc. Such operational complexity increases commissions, administrative costs, and system expenses, leading to higher expense ratios.
+Overall, these patterns indicate that solvency factors influence profitability ratios in different ways, and that these correlations arise from multifactorial mechanisms. Differences in underwriting strategy, operational structure, business models, and portfolio composition all contribute to the way solvency and performance indicators relate to one another. 
 
-Third, Own Funds and Technical Provisions are **positively correlated** with the Loss and Combined Ratios. Large insurers handle greater business volumes and thus experience more claims in absolute terms, which can raise loss ratios and combined ratios.
-
-Overall, these patterns indicate that solvency factors influence profitability ratios in different ways, and that these correlations arise from multifactorial mechanisms shaping how the underlying variables interact. Differences in underwriting strategy, operational structure, business models, and portfolio composition all contribute to the way solvency and performance indicators relate to one another.
-
-An interesting next step is to examine how the solvency and profitability of the insurance sector relate to countries’ levels of economic development. To explore this connection, GDP per capita will be incorporated into the analysis and visualized through a regression plot, providing initial insights into whether stronger solvency/profitability are associated with higher economic performance.
+An interesting next step is to examine how the solvency and profitability of the insurance sector relate to countries’ levels of economic development. To explore this connection, GDP per capita will be incorporated into the analysis and visualized through a regression plot, providing initial insights into whether stronger solvency/profitability are associated with higher economic performance
 
 ```{python}
 df_relation2 = df_relation.reset_index()
@@ -893,7 +888,7 @@ df_full["log_GDP"] = np.log(df_full["GDP_per_capita"])
 ## SCR Ratio vs GDP per Capita
 ```{python}
 
-plt.figure(figsize=(7,5))
+plt.figure(figsize=(7,4))
 
 sns.regplot(
     data=df_full,
@@ -915,7 +910,7 @@ plt.show()
 
 ## Combined Ratio vs GDP per Capita 
 ```{python}
-plt.figure(figsize=(7,5))
+plt.figure(figsize=(7,4))
 
 sns.regplot(
 data=df_full,
@@ -937,9 +932,9 @@ plt.show()
 
 :::
 
-The regression plots between GDP per capita (log scale) and both the SCR ratio and the Combined Ratio reveal only weak linear relationships. The SCR ratio shows a slightly positive association with GDP per capita, suggesting that insurers in wealthier countries may exhibit somewhat stronger solvency positions, although the effect is small and the dispersion is considerable. Similarly, the Combined Ratio displays a slight upward trend with GDP per capita, potentially reflecting higher operating costs or greater market competitiveness in more developed countries, which can compress pricing margins and result in slightly higher combined ratios.
+The regression plots between **GDP per capita (log scale) and both the SCR ratio and the Combined Ratio reveal only weak linear relationships.** The SCR ratio shows a slightly positive association with GDP per capita, suggesting that insurers in wealthier countries may exhibit somewhat stronger solvency positions, although the effect is small and the dispersion is considerable. Similarly, the **Combined Ratio displays a slight upward trend with GDP per capita**, potentially reflecting higher operating costs or greater market competitiveness in more developed countries, which can compress pricing margins and result in slightly higher combined ratios.
 
-These results support the hypothesis of **Sipi and Toufinas** that Solvency II has no statistically significant impact either on profitability or on financial strength. . Although, this will be examined more in the following research questions. Overall, country-level wealth does not appear to be a strong determinant of either solvency or profitability in the European insurance sector.
+In conclusion, the results on this first part support the hypothesis of **Siopi and Poufinas** that Solvency II has no statistically significant impact either on profitability or on financial strength . [@Siopi2023]
 
 ## Research Question 2
 ### How do levels of insurers’ assets and liabilities correlate with country-level premiums written and claims incurred across EU insurance markets? 
@@ -1790,7 +1785,7 @@ for col in ['min', 'max', 'mean']:
 cluster_table_final
 ```
 
-The findings highlight that  France, Germany, and Italy stand out as outliers. They report much higher premium volumes and larger investments in bonds than other countries. France also differs with its relatively high equity allocation compared with Italy and Germany. These differences are consistent with the size and depth of their insurance sectors since  France, Italy, and Germany have some of the largest and most developed insurance sectors in Europe. Their scale allows insurers to collect more premiums and invest more in bonds and other asset classes. @FederalReservePaper
+The findings highlight that  France, Germany, and Italy stand out as outliers. They report much higher premium volumes and larger investments in bonds than other countries. France also differs with its relatively high equity allocation compared with Italy and Germany. These differences are consistent with the size and depth of their insurance sectors since  France, Italy, and Germany have some of the largest and most developed insurance sectors in Europe. Their scale allows insurers to collect more premiums and invest more in bonds and other asset classes. [@FederalReservePaper]
 ```{python}
 
 data['Date'] = pd.to_datetime(data['Date'])
@@ -1873,7 +1868,7 @@ fig.update_layout(
 fig.show()
 ```
 
-Across all EU countries, bonds remain the primary investment category. This reflects their safety and the need for insurers to follow regulatory requirements for asset preservation such as Solvency II. Premium volumes show strong positive correlations with bonds, collective investment undertakings, property, and deposits @FederalReservePaper. This suggests that as insurers collect more premiums, they tend to allocate more funds to these asset types. Bonds and property show one of the strongest correlations with each other; this suggests that insurers in larger and more mature markets tend to combine safe, conservative assets with diversified property holdings as their portfolios grow.
+Across all EU countries, bonds remain the primary investment category. This reflects their safety and the need for insurers to follow regulatory requirements for asset preservation such as Solvency II. Premium volumes show strong positive correlations with bonds, collective investment undertakings, property, and deposits [@FederalReservePaper]. This suggests that as insurers collect more premiums, they tend to allocate more funds to these asset types. Bonds and property show one of the strongest correlations with each other; this suggests that insurers in larger and more mature markets tend to combine safe, conservative assets with diversified property holdings as their portfolios grow.
 
 Derivatives behave differently. Unlike bonds or equities, their levels do not rise strongly with premium volumes. Their weaker correlations with other assets imply a more specialized risk-management  role that is less connected to overall business size or premium growth.
 
