@@ -1630,7 +1630,7 @@ fig.update_layout(
     title=f"Correlation Matrix — {default_year}",
     xaxis=dict(title="Variables", tickangle=45),
     yaxis=dict(title="Variables", autorange="reversed"),
-    width=600,
+    width=700,
     height=600,
     updatemenus=[dict(
         buttons=buttons,
