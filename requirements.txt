@@ -139,3 +139,5 @@ websocket-client==1.9.0
 widgetsnbextension==4.0.14
 xyzservices==2025.11.0
 yarg==0.1.9
+pyarrow>=16.0.0
+traittypes>=0.2.1
