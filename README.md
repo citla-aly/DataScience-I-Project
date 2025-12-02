@@ -33,10 +33,13 @@ The main limitation we encountered relates to the methodology required to merge 
 The HTML report is organized as follow. Section 1 is composed of the project goals, the related work and presents the 3 research questions. Section 2 reviews the related work. Section 2 includes the Data, with Section 2.1 detailing the dataset alongside the preprocessing and data-cleaning procedures. Sections 3.1, 3.2, and 3.3 then present the analyses corresponding to Research Questions 1, 2, and 3. Finally, Section 4 concludes the study by summarising the key findings from the perspective of both insurers and consumers. 
 
 ### How to run the code
-- Install dependencies: pip install -r requirements.txt
-- Render report: quarto render "path where the repository was cloned" + /final_l.qmd
+- Clone the repository
+- Install dependencies, inside DataScience-I-Project:  pip install -r requirements.txt
+- Render report inside "path where the repository was cloned" + /DataScience-I-Project/: quarto render final_l.qmd
 - To shows all file size information: ls -lh final_l.html
   
+Open file:
+
 - To open the HTML file in Linux: xdg-open final_l.html
 - To open the HTML file in Windows : start final_l.html
 
