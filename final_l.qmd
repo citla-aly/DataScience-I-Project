@@ -345,14 +345,33 @@ Premiums_wide = (
     .reset_index()
 )
 
-Own_Funds_wide = (
+#Aggregate by sum
+Own_Funds_sum = (
     Own_Funds.pivot_table(
         index=['Reporting country', 'Date'],
         columns='Item code',
         values='Value',
-        aggfunc='mean')
+        aggfunc='sum'
+    )
     .reset_index()
 )
+
+#compute mean for ratios 
+SCR_mean = (
+    Own_Funds[Own_Funds['Item code'] == 'R0620_O']
+    .groupby(['Reporting country', 'Date'])['Value']
+    .mean()
+    .rename('R0620_O')              # mismo nombre que la columna del pivot
+    .reset_index()
+)
+
+#Sustitute the column of mean for ratios
+Own_Funds_wide = (
+    Own_Funds_sum
+    .drop(columns=['R0620_O']) #we drop the column of sum
+    .merge(SCR_mean, on=['Reporting country', 'Date'], how='left')
+)
+
 #Exclude European Union Agregate (EEA)
 Premiums_wide=Premiums_wide[Premiums_wide['Reporting country']!='EEA']
 Own_Funds_wide=Own_Funds_wide[Own_Funds_wide['Reporting country']!='EEA']
