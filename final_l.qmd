@@ -478,10 +478,10 @@ To determine solvency patterns across European Union countries, 4 key solvency f
 ```{python} 
 #Asign proper names for better understanding.
 new_cols = pd.DataFrame({
-    "Own_Funds": df["R0540_O"],
+    "Own_Funds": df["R0540_O"]* 1000,
     "SCR_ratio": df["R0620_O"],
     "MCR_ratio": df["R0640_O"],
-    "Total_TP": df[["R0510_BS", "R0600_BS", "R0690_BS"]].sum(axis=1),
+    "Total_TP": (df[["R0510_BS", "R0600_BS", "R0690_BS"]].sum(axis=1)* 1000),
     "Total_Assets": df["R0500_BS"],
     "Total_Liabilities": df["R0900_BS"],
 })
