@@ -35,7 +35,7 @@ The HTML report is organized as follow. Section 1 is composed of the project goa
 ### How to run the code
 - Clone the repository
 - Install dependencies: pip install -r requirements.txt
-- Render report: quarto render "path where the repository was cloned" + /final_l.qmd
+- Render report: quarto render "path where the repository was cloned" + /DataScience-I-Project/final_l.qmd
 - To shows all file size information: ls -lh final_l.html
   
 Open file:
