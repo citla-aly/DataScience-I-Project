@@ -361,7 +361,7 @@ SCR_mean = (
     Own_Funds[Own_Funds['Item code'] == 'R0620_O']
     .groupby(['Reporting country', 'Date'])['Value']
     .mean()
-    .rename('R0620_O')              # mismo nombre que la columna del pivot
+    .rename('R0620_O')
     .reset_index()
 )
 
@@ -588,7 +588,7 @@ fig.update_geos(
 )
 
 fig.update_layout(
-    width=750,
+    width=700,
     height=450,
     margin=dict(l=0, r=0, t=40, b=0)
 )
@@ -619,7 +619,7 @@ fig.update_geos(
 )
 
 fig.update_layout(
-    width=750,
+    width=700,
     height=450,
     margin=dict(l=0, r=0, t=40, b=0)
 )
@@ -1429,6 +1429,9 @@ data['Date'] = pd.to_datetime(data['Date'])
 
 # Exclude years 2016 and 2025 (data incomplete)
 data = data[~data['Date'].dt.year.isin([2016, 2025])]
+
+numeric_cols = data.select_dtypes(include='number').columns
+data[numeric_cols] = data[numeric_cols] * 1000
 
 data_main  = data[data['Reporting country'].isin(main_countries)].copy()
 data_other = data[~data['Reporting country'].isin(main_countries)].copy()
